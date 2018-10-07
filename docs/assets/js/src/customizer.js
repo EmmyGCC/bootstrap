@@ -251,10 +251,7 @@ window.onload = function () { // wait for load in a dumb way because B-0
       compileLESS(themeLessSource, 'bootstrap-theme', result)
     ).done(function () {
       for (var key in result) {
-        result[key] = autoprefixer.process(result[key], {
-          browsers: __configBridge.autoprefixerBrowsers,
-          cascade: false
-        }).css
+        result[key] = autoprefixer.process(result[key], __configBridge.autoprefixer).css
       }
       promise.resolve(result)
     }).fail(function (err) {
